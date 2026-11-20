@@ -1,14 +1,14 @@
-# HS075 BLE thermo-hygrometer reader for MikroTik KNOT (RouterOS 7)
+# H5075 BLE thermo-hygrometer reader for MikroTik KNOT (RouterOS 7)
 #
-# Decodes the advertisements of Govee-format thermo-hygrometers (sold as HS075,
+# Decodes the advertisements of Govee-format thermo-hygrometers (Govee H5075,
 # advertised as GVH5075_xxxx) received by the KNOT BLE scanner, and writes
 # temperature, humidity and battery to the system log.
 #
-# Log line format (topic "hs075", one line per sensor):
-#   hs075-1: temperature=27.9 C humidity=63.5 % battery=100 % last-seen=2026-11-20 17:02:51
+# Log line format (topic "h5075", one line per sensor):
+#   h5075-1: temperature=27.9 C humidity=63.5 % battery=100 % last-seen=2026-11-20 17:02:51
 #
 # Setup: see ble-setup.rsc (whitelist and scanner)
-# Run:   /system script run hs075-reader
+# Run:   /system script run h5075-reader
 # Scheduled every 5 seconds by the scheduler in mqtt-setup.rsc (or a dedicated scheduler entry)
 #
 # Manufacturer data (AD type 0xFF, company ID 0xEC88, 6 payload bytes):
@@ -23,7 +23,7 @@
 #   - Negative temperatures are not decoded yet.
 #   - Stale readings are not filtered; the last-seen field shows the advertisement time.
 
-:local sensors {"A4:C1:38:8B:3D:15"="hs075-1"; "A4:C1:38:01:D9:6E"="hs075-2"}
+:local sensors {"A4:C1:38:8B:3D:15"="h5075-1"; "A4:C1:38:01:D9:6E"="h5075-2"}
 
 # Converts a lowercase hex string into a decimal number.
 :local hexToNum do={
