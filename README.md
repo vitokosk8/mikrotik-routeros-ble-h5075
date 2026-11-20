@@ -17,6 +17,8 @@ needs no pairing or connection.
 | `h5075-reader.rsc` | RouterOS script that decodes the advertisements and writes the values to the log |
 | `ble-setup.rsc` | Whitelist and scanner configuration for the sensors |
 | `scheduler-setup.rsc` | Scheduler entry that runs the reader every 5 seconds |
+| `docs/govee-h5075-user-manual.pdf` | Govee H5075 user manual |
+| `images/` | Photo of the sensors |
 
 ## Data flow
 
@@ -40,8 +42,14 @@ H5075 sensors ──BLE advertisements──► MikroTik KNOT (RouterOS 7, /iot 
 | Item | Details |
 |---|---|
 | Router | MikroTik KNOT with built-in Bluetooth, RouterOS 7 (tested with the `iot` package) |
-| Sensors | Govee H5075 thermo-hygrometers. They advertise as `GVH5075_xxxx` |
+| Sensors | Govee H5075 Smart Thermo-Hygrometer (SKU H5075001 / H5075081). They advertise as `GVH5075_xxxx` |
+| Manufacturer | Shenzhen Intellirocks Tech Co., Ltd. (per the EU compliance information in the manual) |
+| Radio | Bluetooth, 50 m / 164 ft range without obstacles. The manual does not name the radio chip; the sensors' MAC prefix `A4:C1:38` is registered to Telink Semiconductor in the IEEE registry |
+| Accuracy | Temperature ±0.3 °C / ±0.54 °F; humidity ±3 % (manual) |
+| Operating range | 0 °C to 50 °C (32 °F to 122 °F); humidity 0 % to 99 % (manual) |
 | Advertising format | Manufacturer data, company ID `0xEC88`, unencrypted |
+
+The official user manual is included in [`docs/govee-h5075-user-manual.pdf`](docs/govee-h5075-user-manual.pdf). It covers the device, the Govee Home app and the Bluetooth connection.
 
 ---
 
@@ -146,4 +154,5 @@ Sensor MACs and names are defined at the top of `h5075-reader.rsc`:
 
 ## Sources
 
+- [Govee H5075 user manual](docs/govee-h5075-user-manual.pdf) (included in this repository)
 - [RouterOS Bluetooth (`/iot bluetooth`) documentation](https://help.mikrotik.com/docs/spaces/ROS/pages/78086201/Bluetooth)
