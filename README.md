@@ -1,5 +1,7 @@
 # H5075 Bluetooth thermo-hygrometers on a MikroTik KNOT
 
+🇬🇧 English · [🇪🇸 Español](README.es.md)
+
 Read temperature, humidity and battery from H5075 Bluetooth thermo-hygrometers
 with a **MikroTik KNOT** (RouterOS 7) acting as a BLE scanner. A script decodes
 each advertisement and writes the values to the router log every 5 seconds.
